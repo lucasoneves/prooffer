@@ -7,7 +7,7 @@ const HeaderApp = styled.header`
 `;
 
 const Wrapper = styled.div`
-  max-width: 768px;
+  max-width: 640px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ const Header = (props) => {
   return (
     <HeaderApp>
       <Wrapper>
-        <h2>Just Jobs</h2>
+        <h2>proffer</h2>
         {props.children}
       </Wrapper>
     </HeaderApp>

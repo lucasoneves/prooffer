@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'RocknRoll One', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -10,7 +12,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background:linear-gradient(to right bottom,#2c3e50, #1c4c6b);
+  background:linear-gradient(to right bottom, #2C3E4D 10%, #3a1c6b 90%);
+  background-repeat: no-repeat;
+  min-height: 100vh;
   color: #ecf0f1;
 }
 

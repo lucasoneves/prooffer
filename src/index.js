@@ -5,9 +5,10 @@ import App from "./container/App";
 import reportWebVitals from "./reportWebVitals";
 
 // Provider inject the Store into react components
-import { Provider } from "react-redux";
 import { createStore } from "redux";
-import reducer from "./store/reducer";
+import { Provider } from "react-redux";
+// import counterReducer from "./store/reducers/counter";
+import reducer from './store/reducers/offers';
 
 const store = createStore(reducer);
 
