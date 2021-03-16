@@ -23,7 +23,7 @@ const Header = (props) => {
   return (
     <HeaderApp>
       <Wrapper>
-        <h2>prooffer</h2>
+        <h2>proffer</h2>
         {props.children}
       </Wrapper>
     </HeaderApp>
