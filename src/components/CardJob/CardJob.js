@@ -1,12 +1,7 @@
 import { React, useState } from 'react';
 import styled from 'styled-components';
-import * as actionTypes from '../../store/actions';
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import BaseButton from '../BaseButton/BaseButton';
-
-
-// Connect
-import { connect } from 'react-redux';
 
 const MainButton = styled.button`
   background: transparent;
@@ -30,7 +25,6 @@ const Card = styled.div`
   background: #f2f2f2;
   padding: 20px 30px 30px;
   border-radius: 5px;
-  margin: 15px 0;
   box-shadow: 0 0 10px black;
   width: 100%;
   color: #444;
@@ -39,6 +33,7 @@ const Card = styled.div`
 
   p {
     font-size: 14px;
+    margin-bottom: 10px;
   }  
 
   &:hover {
@@ -54,6 +49,11 @@ const Logo = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   margin-right: 20px;
+  margin-bottom: 15px;
+
+  @media (min-width: ${props => props.breakpoint}) {
+    margin-bottom: 0;
+  }
 `
 
 const Flex = styled.div`
@@ -61,28 +61,35 @@ const Flex = styled.div`
   align-items: center;
 
   &.header {
-    gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    gap: ${props => props.gap};
+    align-items: ${props => props.alignItems};
   }
   
   justify-content: ${props => props.justifyContent};
   flex-wrap: ${props => props.flexWrap};
   gap: ${props => props.gap};
+
+  &.actions {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+  }
 `
 
 const CardJob = (props) => {
 
   return (
     <Card className={props.classList}>
-      <Flex className="header" flexWrap="wrap" justifyContent="space-between">
+      <Flex className="header" flexWrap="wrap" justifyContent="space-between" alignItems="flex-end">
         <Flex>
-          <Logo thumb={props.thumb}></Logo>
-          <h2>{props.companyName}</h2>
+          <Logo thumb={props.thumb} breakpoint="640px"></Logo>
+          <h2>{props.company_name}</h2>
         </Flex>
         <p>Status: Em Andamento</p>
       </Flex>
 
-      <Flex justifyContent="space-between" flexWrap="wrap" gap="10px">
+      <Flex justifyContent="space-between" flexWrap="wrap" gap="20px">
         <p>{props.role}</p>
         <p>Contato: {props.contact}</p>
         <Flex className="actions">
