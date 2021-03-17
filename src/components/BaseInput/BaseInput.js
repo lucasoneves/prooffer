@@ -6,6 +6,7 @@ const Input = styled.input`
   padding: 10px 10px;
   border-radius: 5px;
   border: 0;
+  font-size: 14px;
 
   &:focus {
     outline: default;

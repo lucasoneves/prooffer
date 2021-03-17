@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '../container/Container';
 import Greeting from '../components/Greeting/Greeting';
 import BaseInput from '../components/BaseInput/BaseInput';
+import BaseSelect from '../components/BaseSelect/BaseSelect';
 import styled from 'styled-components';
 
 const FormWrapper = styled.form`
@@ -19,7 +20,8 @@ const newJob = () => {
 				<BaseInput type="text" placeholder="Nome da Empresa" />
 				<BaseInput type="text" placeholder="Cargo" />
 				<BaseInput type="email" placeholder="Email do responsável da vaga" />
-				<select>
+				<BaseSelect label="Status da vaga"></BaseSelect>
+				{/* <select>
 					<option>Status</option>
 					<option>Currículo Enviado</option>
 					<option>Entrevista com RH</option>
@@ -28,7 +30,7 @@ const newJob = () => {
 					<option>Aguardando Feedback</option>
 					<option>Reprovado</option>
 					<option>Aprovado</option>
-				</select>
+				</select> */}
 			</FormWrapper>
 		</Container>
 	)
