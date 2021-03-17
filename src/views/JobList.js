@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '../container/Container';
 import CardJob from '../components/CardJob/CardJob';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as actionTypes from '../store/actions';
 
 const Greeting = styled.h2`
 font-size: 30px;
@@ -27,19 +29,40 @@ gap: 20px;
 }
 `
 
-const JobsList = () => {
+const JobsList = (props) => {
+
+  const jobsInfo = props.offer.map(item =>
+    (<CardJob classList="card-offer"
+      thumb={item.thumb}
+      companyName={item.company_name}
+      role={item.role} contact={`${item.contact.email}`}
+      key={item.id}
+    >  
+    </CardJob>)
+  )
+
   return (
     <div>
-    <Container>
-    <Greeting>Olá! Esses são seus processos seletivos cadastrados =).</Greeting>
-    <Wrapper>
-    <CardJob classList="card-offer" thumb="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIzqiZBOMa5Zz8_-7Ks3TR-0W8PBXB8922rA&usqp=CAU" companyName="McDonalds" role="Web Developer"></CardJob>
-    <CardJob classList="card-offer" thumb="https://about.gitlab.com/images/press/logo/png/gitlab-logo-gray-rgb.png" companyName="Natura" role="Front-End Engineer"></CardJob>
-    <CardJob classList="card-offer" thumb="https://cdn.freebiesupply.com/images/large/2x/premier-league-logo-png-transparent.png" companyName="Microsoft" role="Software Engineer"></CardJob>
-    </Wrapper>
-    </Container>
+      <Container>
+        <Greeting>Olá! Esses são seus processos seletivos cadastrados =).</Greeting>
+        <Wrapper>
+          {jobsInfo}
+        </Wrapper>
+      </Container>
     </div>
-    )
-  };
-  
-  export default JobsList;
+  )
+};
+
+const mapStateToProps = state => {
+  return {
+    offer: state.offers
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddOffer: () => dispatch({type: actionTypes.ADD_OFFER}),
+    onRemoveOffer: (id) => dispatch({type: actionTypes.REMOVE_OFFER, offerId: id})
+  }
+}
+
+export default connect(mapStateToProps)(JobsList);

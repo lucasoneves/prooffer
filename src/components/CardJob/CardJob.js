@@ -53,6 +53,7 @@ const Logo = styled.div`
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  margin-right: 20px;
 `
 
 const Flex = styled.div`
@@ -83,7 +84,7 @@ const CardJob = (props) => {
 
       <Flex justifyContent="space-between" flexWrap="wrap" gap="10px">
         <p>{props.role}</p>
-        <p>Contato: luciane@empresa.com</p>
+        <p>Contato: {props.contact}</p>
         <Flex className="actions">
           <BaseButton><FaRegEdit /> Editar </BaseButton>
           <BaseButton type="danger"><FaRegTrashAlt /> Excluir </BaseButton>
@@ -94,19 +95,4 @@ const CardJob = (props) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    ctr: state.counter,
-    parag: state.offers
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    incrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
-    decreaseCounter: () => dispatch({ type: actionTypes.DECREMENT })
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardJob);
+export default CardJob;
