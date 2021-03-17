@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import Container from '../container/Container';
 import CardJob from '../components/CardJob/CardJob';
 import styled from 'styled-components';
+import Greeting from '../components/Greeting/Greeting';
 import { connect } from 'react-redux';
 import * as actionTypes from '../store/actions';
-
-const Greeting = styled.h2`
-font-size: 30px;
-margin: 100px 0 50px 0;
-`
 
 const Wrapper = styled.div`
 display: flex;
@@ -34,7 +30,7 @@ const JobsList = (props) => {
   const jobsInfo = props.offer.map(item =>
     (<CardJob classList="card-offer"
       thumb={item.thumb}
-      companyName={item.company_name}
+      company_name={item.company_name}
       role={item.role} contact={`${item.contact.email}`}
       key={item.id}
     >  

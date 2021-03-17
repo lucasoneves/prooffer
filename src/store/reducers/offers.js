@@ -2,12 +2,32 @@ import * as actionTypes from '../actions';
 
 const initialState = {
   offers: [{
-    name: "Alura",
+    company_name: "Alura",
     role: "Desenvolvedor Front-End",
     thumb: "https://bossabox.com/blog/wp-content/uploads/2019/06/alura.jpg",
     status: 1,
     contact: {
       email: 'luciana@wayon.com.br'
+    },
+    id: Math.floor(Math.random() * 100000000) + 1
+  },
+  {
+    company_name: "Twitch",
+    role: "Desenvolvedor Front-End",
+    thumb: "https://i.pinimg.com/originals/94/3a/eb/943aebb663aaa7a87343bb230c91dcc7.png",
+    status: 1,
+    contact: {
+      email: 'luciana@twitch.com.br'
+    },
+    id: Math.floor(Math.random() * 100000000) + 1
+  },
+  {
+    company_name: "Toggl",
+    role: "Desenvolvedor Front-End",
+    thumb: "https://d1w82f5xc78wju.cloudfront.net/uploads/targetware/image/file/17899/toggl.master.jpg",
+    status: 1,
+    contact: {
+      email: 'luciana@toggl.com.br'
     },
     id: Math.floor(Math.random() * 100000000) + 1
   }]
