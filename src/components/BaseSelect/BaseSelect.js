@@ -2,25 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
-const BaseSelectWrapper = styled.div`
+const Select = styled.select`
   background: #fff;
   font-size: 14px;
   color: #666;
   border-radius: 5px;
-`;
-
-const BaseSelectHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 10px;
-`;
-
-const Options = styled.div`
-  span {
-    display: block;
-    padding: 10px;
-  }
+  width: 100%;
 `;
 
 const BaseSelect = (props) => {
@@ -61,21 +49,14 @@ const BaseSelect = (props) => {
     setValueSelected(label)
   }
   return (
-    <BaseSelectWrapper>
-      <BaseSelectHeader onClick={toggleOptions}>
-        {valueSelected}
-        {optionsVisible ? <FaAngleUp></FaAngleUp> : <FaAngleDown></FaAngleDown>}
-      </BaseSelectHeader>
-      {optionsVisible ? (
-        <Options>
-          {optionsForm.map(item => (
-            <span key={item.value} onClick={() => setOptionSelected(item.value, item.label)}> {item.label}</span>
-          ))}
-        </Options>
-      ) : (
-        ""
+    <Select>
+      <option>Selecione o status</option>
+      {optionsForm.map(item => (
+
+        <option value={item.value} key={item.value}>{item.label}</option>
+      )
       )}
-    </BaseSelectWrapper>
+    </Select>
   );
 };
 

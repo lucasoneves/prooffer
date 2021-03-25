@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const ButtonWrapper = styled.div`
   font-size: 12px;
-  width: auto;
+  width: 100%;
+  justify-content: center;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -17,11 +18,16 @@ const ButtonWrapper = styled.div`
     border: 1px solid transparent;
     color: #d63031;
   }
+
+  &.success {
+    background: #2980b9;
+    color: #fff;
+  }
 `
 
 const BaseButton = (props) => {
   return (
-    <ButtonWrapper className={props.type}>
+    <ButtonWrapper className={[props.type, props.className]}>
       { props.children }
     </ButtonWrapper>
   )

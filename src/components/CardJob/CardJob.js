@@ -1,7 +1,7 @@
-import { React, useState } from 'react';
-import styled from 'styled-components';
+import { React, useState } from "react";
+import styled from "styled-components";
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
-import BaseButton from '../BaseButton/BaseButton';
+import BaseButton from "../BaseButton/BaseButton";
 
 const MainButton = styled.button`
   background: transparent;
@@ -17,9 +17,9 @@ const MainButton = styled.button`
   min-width: 120px;
 
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
-`
+`;
 
 const Card = styled.div`
   background: #f2f2f2;
@@ -28,21 +28,21 @@ const Card = styled.div`
   box-shadow: 0 0 10px black;
   width: 100%;
   color: #444;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   opacity: 1;
 
   p {
     font-size: 14px;
     margin-bottom: 10px;
-  }  
+  }
 
   &:hover {
     opacity: 1;
   }
-`
+`;
 
 const Logo = styled.div`
-  background: url(${props => props.thumb});
+  background: url(${(props) => props.thumb});
   width: 70px;
   height: 70px;
   background-size: 100%;
@@ -51,37 +51,48 @@ const Logo = styled.div`
   margin-right: 20px;
   margin-bottom: 15px;
 
-  @media (min-width: ${props => props.breakpoint}) {
+  @media (min-width: ${(props) => props.breakpoint}) {
     margin-bottom: 0;
   }
-`
+`;
 
 const Flex = styled.div`
   display: flex;
   align-items: center;
 
   &.header {
-    margin-bottom: 20px;
-    gap: ${props => props.gap};
-    align-items: ${props => props.alignItems};
+    margin-bottom: 10px;
+    gap: ${(props) => props.gap};
+    align-items: ${(props) => props.alignItems};
   }
-  
-  justify-content: ${props => props.justifyContent};
-  flex-wrap: ${props => props.flexWrap};
-  gap: ${props => props.gap};
 
-  &.actions {
-    display: flex;
-    justify-content: flex-end;
-    flex: 1;
+  justify-content: ${(props) => props.justifyContent};
+  flex-wrap: ${(props) => props.flexWrap};
+  gap: ${(props) => props.gap};
+
+  @media (max-width: ${(props) => props.breakpoint}) {
+    flex-wrap: wrap;
   }
-`
+
+  .actions {
+    width: 100%;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+`;
 
 const CardJob = (props) => {
-
   return (
     <Card className={props.classList}>
-      <Flex className="header" flexWrap="wrap" justifyContent="space-between" alignItems="flex-end">
+      <Flex
+        className="header"
+        flexWrap="wrap"
+        justifyContent="space-between"
+        alignItems="flex-end"
+        gap="10px"
+      >
         <Flex>
           <Logo thumb={props.thumb} breakpoint="640px"></Logo>
           <h2>{props.company_name}</h2>
@@ -89,17 +100,24 @@ const CardJob = (props) => {
         <p>Status: Em Andamento</p>
       </Flex>
 
-      <Flex justifyContent="space-between" flexWrap="wrap" gap="20px">
-        <p>{props.role}</p>
-        <p>Contato: {props.contact}</p>
-        <Flex className="actions">
-          <BaseButton><FaRegEdit /> Editar </BaseButton>
-          <BaseButton type="danger"><FaRegTrashAlt /> Excluir </BaseButton>
+      <Flex justifyContent="space-between" flexWrap="wrap" gap="10px">
+        <Flex className="full-width" justifyContent="space-between">
+          <p>{props.role}</p>
+        </Flex>
+        <Flex className="full-width" justifyContent="space-between" flexWrap="wrap" gap="10px">
+          <p>Contato: {props.contact}</p>
+          <Flex className="actions">
+            <BaseButton>
+              <FaRegEdit /> Editar{" "}
+            </BaseButton>
+            <BaseButton type="danger">
+              <FaRegTrashAlt /> Excluir{" "}
+            </BaseButton>
+          </Flex>
         </Flex>
       </Flex>
-
     </Card>
-  )
-}
+  );
+};
 
 export default CardJob;
