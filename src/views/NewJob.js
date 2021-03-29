@@ -5,6 +5,8 @@ import BaseInput from '../components/BaseInput/BaseInput';
 import BaseSelect from '../components/BaseSelect/BaseSelect';
 import BaseButton from '../components/BaseButton/BaseButton';
 import styled from 'styled-components';
+import * as actionTypes from '../store/actions';
+import { connect } from 'react-redux';
 
 const FormWrapper = styled.form`
 	input {
@@ -21,7 +23,7 @@ const GreetingText = styled.p`
 	margin-bottom: 40px;
 `
 
-const newJob = () => {
+const NewJob = (props, {dispatch}) => {
 	return (
 		<Container>
 			<Greeting>Adicionar processo seletivo</Greeting>
@@ -31,20 +33,17 @@ const newJob = () => {
 				<BaseInput type="text" placeholder="Cargo" />
 				<BaseInput type="email" placeholder="Email do responsável da vaga" />
 				<BaseSelect label="Status da vaga"></BaseSelect>
-				{/* <select>
-					<option>Status</option>
-					<option>Currículo Enviado</option>
-					<option>Entrevista com RH</option>
-					<option>Entrevista com Gestor</option>
-					<option>Teste técnico</option>
-					<option>Aguardando Feedback</option>
-					<option>Reprovado</option>
-					<option>Aprovado</option>
-				</select> */}
-				<BaseButton className="button-submit" type="success">Salvar</BaseButton>
+				<BaseButton className="button-submit" type="success" click={() => props.onAddOffer()}>Salvar</BaseButton>
 			</FormWrapper>
 		</Container>
 	)
 }
 
-export default newJob;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddOffer: () => dispatch({type: actionTypes.ADD_OFFER}),
+    onRemoveOffer: (id) => dispatch({type: actionTypes.REMOVE_OFFER, offerId: id})
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewJob);

@@ -54,11 +54,6 @@ const mapStateToProps = state => {
     offer: state.offers
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddOffer: () => dispatch({type: actionTypes.ADD_OFFER}),
-    onRemoveOffer: (id) => dispatch({type: actionTypes.REMOVE_OFFER, offerId: id})
-  }
-}
+
 
 export default connect(mapStateToProps)(JobsList);
