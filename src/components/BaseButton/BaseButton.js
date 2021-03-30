@@ -27,7 +27,7 @@ const ButtonWrapper = styled.div`
 
 const BaseButton = (props) => {
   return (
-    <ButtonWrapper className={[props.type, props.className]}>
+    <ButtonWrapper className={[props.type, props.className]} onClick={props.click}>
       { props.children }
     </ButtonWrapper>
   )

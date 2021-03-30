@@ -7,7 +7,7 @@ const HeaderApp = styled.header`
 `;
 
 const Wrapper = styled.div`
-  max-width: 640px;
+  max-width: 600px;
   margin: auto;
   display: flex;
   align-items: center;

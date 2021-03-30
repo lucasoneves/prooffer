@@ -22,12 +22,12 @@ const MainButton = styled.button`
 `;
 
 const Card = styled.div`
-  background: #f2f2f2;
+  background: rgba(0, 0, 0, .4);
   padding: 20px 30px 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px black;
   width: 100%;
-  color: #444;
+  color: #f2f2f2;
   transition: all 0.3s ease-in-out;
   opacity: 1;
 
