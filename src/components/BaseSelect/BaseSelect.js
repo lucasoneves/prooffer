@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const Select = styled.select`
-  background: #fff;
+  background: rgba(0, 0, 0, .4);
   font-size: 14px;
-  color: #666;
+  color: #f2f2f2;
   border-radius: 5px;
   padding: 10px;
   width: 100%;

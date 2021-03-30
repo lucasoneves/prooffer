@@ -23,7 +23,7 @@ const GreetingText = styled.p`
 	margin-bottom: 40px;
 `
 
-const NewJob = (props, {dispatch}) => {
+const NewJob = (props) => {
 	return (
 		<Container>
 			<Greeting>Adicionar processo seletivo</Greeting>
