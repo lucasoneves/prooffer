@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Container from '../container/Container';
 import Greeting from '../components/Greeting/Greeting';
 import BaseInput from '../components/BaseInput/BaseInput';
@@ -21,30 +21,30 @@ const GreetingText = styled.p`
 	margin-bottom: 40px;
 `
 
-const newJob = () => {
+const NewJob = () => {
+	const [formJob, setFormJob] = useState([]);
+
+	const setVal = (field, val) => {
+		const fieldToAdd = field
+		console.log(val.target.value)
+		console.log(fieldToAdd)
+		setFormJob({ fieldToAdd: val.target.value})
+	}
 	return (
 		<Container>
 			<Greeting>Adicionar processo seletivo</Greeting>
 			<GreetingText>Preenchar as informações para cadastrar um novo processo seletivo.</GreetingText>
+			{/* { formJob.map(item => item) } */}
 			<FormWrapper>
-				<BaseInput type="text" placeholder="Nome da Empresa" />
-				<BaseInput type="text" placeholder="Cargo" />
-				<BaseInput type="email" placeholder="Email do responsável da vaga" />
+				<BaseInput type="text" placeholder="Nome da Empresa" change={(val) => setVal('company', val)}  />
+				<BaseInput type="text" placeholder="Cargo" change={(val) => setVal('role', val)} />
+				<BaseInput type="email" placeholder="Email do responsável da vaga" change={(val, field) => setVal(field, val)} />
 				<BaseSelect label="Status da vaga"></BaseSelect>
-				{/* <select>
-					<option>Status</option>
-					<option>Currículo Enviado</option>
-					<option>Entrevista com RH</option>
-					<option>Entrevista com Gestor</option>
-					<option>Teste técnico</option>
-					<option>Aguardando Feedback</option>
-					<option>Reprovado</option>
-					<option>Aprovado</option>
-				</select> */}
+				
 				<BaseButton className="button-submit" type="success">Salvar</BaseButton>
 			</FormWrapper>
 		</Container>
 	)
 }
 
-export default newJob;
+export default NewJob;

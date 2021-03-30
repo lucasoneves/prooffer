@@ -7,7 +7,7 @@ const Select = styled.select`
   font-size: 14px;
   color: #666;
   border-radius: 5px;
-  padding: 10px;
+  padding: 8px 6px;
   width: 100%;
 `;
 
