@@ -17,7 +17,8 @@ const Input = styled.input`
 
 const BaseInput = (props) => {
   return (
-    <Input type={props.type} placeholder={props.placeholder}></Input>
+    <Input type={props.type} placeholder={props.placeholder} 
+   onBlur={props.blur} onChange={props.change} name={props.field}></Input>
   )
 }
 

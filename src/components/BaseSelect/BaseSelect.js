@@ -49,7 +49,7 @@ const BaseSelect = (props) => {
     setValueSelected(label)
   }
   return (
-    <Select>
+    <Select onChange={props.change}>
       <option>Selecione o status</option>
       {optionsForm.map(item => (
 

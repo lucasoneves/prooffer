@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '../container/Container';
 import Greeting from '../components/Greeting/Greeting';
 import BaseInput from '../components/BaseInput/BaseInput';
@@ -24,15 +24,57 @@ const GreetingText = styled.p`
 `
 
 const NewJob = (props) => {
+	let [formOffer, setFormOffer] = useState({
+		company: '',
+		role: '',
+		status: '',
+		contact: ''
+	})
+	const handleCompany = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				company: val
+			}
+		})
+	}
+	const handleRole = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				role: val
+			}
+		})
+	}
+	const handleContact = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				contact: val
+			}
+		})
+	}
+	const handleStatus = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				status: val
+			}
+		})
+	}
 	return (
 		<Container>
 			<Greeting>Adicionar processo seletivo</Greeting>
 			<GreetingText>Preenchar as informações para cadastrar um novo processo seletivo.</GreetingText>
 			<FormWrapper>
-				<BaseInput type="text" placeholder="Nome da Empresa" />
-				<BaseInput type="text" placeholder="Cargo" />
-				<BaseInput type="email" placeholder="Email do responsável da vaga" />
-				<BaseSelect label="Status da vaga"></BaseSelect>
+				<BaseInput type="text" placeholder="Nome da Empresa" field="company" blur={handleCompany} />
+				<BaseInput type="text" placeholder="Cargo" field="role" blur={handleRole} />
+				<BaseInput type="email" placeholder="Email do responsável da vaga" blur={handleContact} />
+				<BaseSelect label="Status da vaga" change={handleStatus}></BaseSelect>
 				<BaseButton className="button-submit" type="success" click={() => props.onAddOffer()}>Salvar</BaseButton>
 			</FormWrapper>
 		</Container>
