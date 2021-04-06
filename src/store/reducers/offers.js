@@ -36,16 +36,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_OFFER:
-      const newOffer = {
-        id: Math.floor(Math.random() * 100000000) + 1,
-        name: 'Canal Scena',
-        role: 'Desenvolvedor Front-End',
-        status: 1,
-        thumb: 'https://is3-ssl.mzstatic.com/image/thumb/Podcasts123/v4/af/68/0f/af680f4c-5e66-7a10-cc80-f0d4497453c7/mza_8120784560120722107.jpg/1200x1200bb.jpg',
-        contact: {
-          email: 'lucas@scena.com'
-        }
-      }
+      const newOffer = action.payload
+      console.log(action.payload)
       return {
         ...state,
         offers: state.offers.concat(newOffer)

@@ -24,17 +24,73 @@ const GreetingText = styled.p`
 `
 
 const NewJob = (props) => {
+	let [formOffer, setFormOffer] = useState({
+		company_name: '',
+		role: '',
+		status: '',
+		thumb: '',
+		contact: '',
+		id: Math.floor(Math.random() * 9999999999) + 1
+	})
+	const handleCompany = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				company_name: val
+			}
+		})
+	}
+	const handleRole = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				role: val
+			}
+		})
+	}
+	const handleContact = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				contact: {
+					email: val
+				}
+			}
+		})
+	}
+	const handleStatus = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				status: val
+			}
+		})
+	}
+	const handleLogo = (e) => {
+		const val = e.target.value;
+		setFormOffer(() => {
+			return {
+				...formOffer,
+				thumb: val
+			}
+		})
+	}
 	return (
 		<Container>
 			<Greeting>Adicionar processo seletivo</Greeting>
 			<GreetingText>Preenchar as informações para cadastrar um novo processo seletivo.</GreetingText>
 			{/* { formJob.map(item => item) } */}
 			<FormWrapper>
-				<BaseInput type="text" placeholder="Nome da Empresa" change={(val) => setVal('company', val)}  />
-				<BaseInput type="text" placeholder="Cargo" change={(val) => setVal('role', val)} />
-				<BaseInput type="email" placeholder="Email do responsável da vaga" change={(val, field) => setVal(field, val)} />
-				<BaseSelect label="Status da vaga"></BaseSelect>
-				<BaseButton className="button-submit" type="success" click={() => props.onAddOffer()}>Salvar</BaseButton>
+				<BaseInput type="text" placeholder="Nome da Empresa" field="company" blur={handleCompany} />
+				<BaseInput type="text" placeholder="Cargo" field="role" blur={handleRole} />
+				<BaseInput type="email" placeholder="Email do responsável da vaga" blur={handleContact} />
+				<BaseInput type="text" placeholder="URL do logo da empresa" blur={handleLogo} />
+				<BaseSelect label="Status da vaga" change={handleStatus}></BaseSelect>
+				<BaseButton className="button-submit" type="success" click={() => props.onAddOffer(formOffer)}>Salvar</BaseButton>
 			</FormWrapper>
 		</Container>
 	)
@@ -42,7 +98,7 @@ const NewJob = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddOffer: () => dispatch({type: actionTypes.ADD_OFFER}),
+    onAddOffer: (payload) => dispatch({type: actionTypes.ADD_OFFER, payload: payload}),
     onRemoveOffer: (id) => dispatch({type: actionTypes.REMOVE_OFFER, offerId: id})
   }
 }
