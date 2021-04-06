@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Container from '../container/Container';
 import Greeting from '../components/Greeting/Greeting';
 import BaseInput from '../components/BaseInput/BaseInput';
 import BaseSelect from '../components/BaseSelect/BaseSelect';
 import BaseButton from '../components/BaseButton/BaseButton';
+import Loading from '../components/Loading/Loading';
 import styled from 'styled-components';
 import * as actionTypes from '../store/actions';
 import { connect } from 'react-redux';
@@ -24,6 +25,7 @@ const GreetingText = styled.p`
 `
 
 const NewJob = (props) => {
+	const [loading, setLoading] = useState(false)
 	let [formOffer, setFormOffer] = useState({
 		company_name: '',
 		role: '',
@@ -90,17 +92,21 @@ const NewJob = (props) => {
 				<BaseInput type="email" placeholder="Email do responsável da vaga" blur={handleContact} />
 				<BaseInput type="text" placeholder="URL do logo da empresa" blur={handleLogo} />
 				<BaseSelect label="Status da vaga" change={handleStatus}></BaseSelect>
-				<BaseButton className="button-submit" type="success" click={() => props.onAddOffer(formOffer)}>Salvar</BaseButton>
+				<BaseButton className="button-submit" type="success" click={() => props.onAddOffer(formOffer, loading)}>Salvar</BaseButton>
 			</FormWrapper>
+			{ loading ? <Loading></Loading> : ''}
 		</Container>
 	)
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onAddOffer: (payload) => dispatch({type: actionTypes.ADD_OFFER, payload: payload}),
-    onRemoveOffer: (id) => dispatch({type: actionTypes.REMOVE_OFFER, offerId: id})
-  }
+	return {
+		onAddOffer: (payload, loading) => {
+			console.log(loading)
+			dispatch({ type: actionTypes.ADD_OFFER, payload: payload })
+		},
+		onRemoveOffer: (id) => dispatch({ type: actionTypes.REMOVE_OFFER, offerId: id })
+	}
 }
 
 export default connect(null, mapDispatchToProps)(NewJob);
