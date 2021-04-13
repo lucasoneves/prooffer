@@ -6,7 +6,7 @@ import BaseSelect from '../components/BaseSelect/BaseSelect';
 import BaseButton from '../components/BaseButton/BaseButton';
 import Loading from '../components/Loading/Loading';
 import styled from 'styled-components';
-import * as actionTypes from '../store/actions';
+import * as actionTypes from '../store/actions/actions';
 import { connect } from 'react-redux';
 
 const FormWrapper = styled.form`

@@ -4,7 +4,7 @@ import CardJob from '../components/CardJob/CardJob';
 import styled from 'styled-components';
 import Greeting from '../components/Greeting/Greeting';
 import { connect } from 'react-redux';
-import * as actionTypes from '../store/actions';
+import * as actionTypes from '../store/actions/actions';
 
 const Wrapper = styled.div`
 display: flex;
