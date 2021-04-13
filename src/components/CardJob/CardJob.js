@@ -110,7 +110,7 @@ const CardJob = (props) => {
             <BaseButton>
               <FaRegEdit /> Editar{" "}
             </BaseButton>
-            <BaseButton type="danger">
+            <BaseButton type="danger" click={props.clicked}>
               <FaRegTrashAlt /> Excluir{" "}
             </BaseButton>
           </Flex>

@@ -4,7 +4,7 @@ import CardJob from '../components/CardJob/CardJob';
 import styled from 'styled-components';
 import Greeting from '../components/Greeting/Greeting';
 import { connect } from 'react-redux';
-import * as actionTypes from '../store/actions/actions';
+import { removeOffer } from "../store/actions/actions";
 
 const Wrapper = styled.div`
 display: flex;
@@ -33,6 +33,7 @@ const JobsList = (props) => {
       company_name={item.company_name}
       role={item.role} contact={`${item.contact.email}`}
       key={item.id}
+      clicked={() => props.onRemoveOffer(item.id)}
     >  
     </CardJob>)
   )
@@ -55,5 +56,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRemoveOffer: (payload) => {
+      console.log(payload)
+      dispatch(removeOffer(payload));
+    }
+  };
+};
 
-export default connect(mapStateToProps)(JobsList);
+
+export default connect(mapStateToProps, mapDispatchToProps)(JobsList);
