@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 
 const JobsList = (props) => {
   const jobsInfo = props.offer.map((item) =>
-    item ? (
+     (
       <CardJob
         classList="card-offer"
         thumb={item.thumb}
@@ -38,8 +38,6 @@ const JobsList = (props) => {
         clicked={() => props.onRemoveOffer(item.id)}
         edit={() => props.onEditOffer(item)}
       ></CardJob>
-    ) : (
-      ""
     )
   );
 
@@ -49,7 +47,7 @@ const JobsList = (props) => {
         <Greeting>
           Olá! Esses são seus processos seletivos cadastrados =).
         </Greeting>
-        <Wrapper>{jobsInfo}</Wrapper>
+        <Wrapper>{jobsInfo.length ? jobsInfo : 'Ainda não existem processos seletivos cadastrados.'}</Wrapper>
       </Container>
     </div>
   );
