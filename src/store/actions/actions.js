@@ -4,9 +4,10 @@ export const ADD_OFFER = 'ADD_OFFER';
 export const REMOVE_OFFER = 'REMOVE_OFFER';
 export const EDIT_OFFER = 'EDIT_OFFER';
 
-export const addOffer = () => {
+export const addOffer = (payload) => {
   return {
-    type: ADD_OFFER
+    type: ADD_OFFER,
+    payload: payload
   }
 }
 

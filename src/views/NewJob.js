@@ -115,7 +115,7 @@ const NewJob = (props) => {
         <BaseButton
           className="button-submit"
           type="success"
-          click={() => props.onAddOffer(formOffer, loading)}
+          click={() => props.onAddOffer(formOffer)}
         >
           Salvar
         </BaseButton>
@@ -127,8 +127,8 @@ const NewJob = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddOffer: () => {
-      dispatch(addOffer());
+    onAddOffer: (payload) => {
+      dispatch(addOffer(payload));
     }
   };
 };
