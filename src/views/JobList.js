@@ -62,7 +62,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onRemoveOffer: (payload) => {
-      console.log(payload);
+      console.log('[DELETE_ITEM]', payload);
       dispatch(removeOffer(payload));
     },
     onEditOffer: (payload) => {
