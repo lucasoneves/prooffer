@@ -4,7 +4,7 @@ import CardJob from '../components/CardJob/CardJob';
 import styled from 'styled-components';
 import Greeting from '../components/Greeting/Greeting';
 import { connect } from 'react-redux';
-import { removeOffer } from "../store/actions/actions";
+import { editOffer, removeOffer } from "../store/actions/actions";
 
 const Wrapper = styled.div`
 display: flex;
@@ -34,6 +34,7 @@ const JobsList = (props) => {
       role={item.role} contact={`${item.contact.email}`}
       key={item.id}
       clicked={() => props.onRemoveOffer(item.id)}
+      edit={() => props.onEditOffer(item)}
     >  
     </CardJob>)
   )
@@ -61,6 +62,10 @@ const mapDispatchToProps = (dispatch) => {
     onRemoveOffer: (payload) => {
       console.log(payload)
       dispatch(removeOffer(payload));
+    },
+    onEditOffer: (payload) => {
+      console.log('[EDIT_ITEM', payload)
+      dispatch(editOffer(payload))
     }
   };
 };

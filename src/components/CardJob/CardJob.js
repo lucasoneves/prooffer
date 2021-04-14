@@ -107,7 +107,7 @@ const CardJob = (props) => {
         <Flex className="full-width" justifyContent="space-between" flexWrap="wrap" gap="10px">
           <p>Contato: {props.contact}</p>
           <Flex className="actions">
-            <BaseButton>
+            <BaseButton click={props.edit}>
               <FaRegEdit /> Editar{" "}
             </BaseButton>
             <BaseButton type="danger" click={props.clicked}>
