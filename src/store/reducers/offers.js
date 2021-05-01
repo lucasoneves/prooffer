@@ -37,7 +37,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_OFFER:
       const newOffer = action.payload
-      console.log(action.payload)
       return {
         ...state,
         offers: state.offers.concat(newOffer)

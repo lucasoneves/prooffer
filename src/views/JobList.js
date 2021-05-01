@@ -41,7 +41,7 @@ const JobsList = (props) => {
   return (
     <div>
       <Container>
-        <Greeting>Olá! Esses são seus processos seletivos cadastrados =).</Greeting>
+        <Greeting>Olá! Esses são seus processos seletivos cadastrados =.</Greeting>
         <Wrapper>
           {jobsInfo}
         </Wrapper>

@@ -127,8 +127,8 @@ const NewJob = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddOffer: () => {
-      dispatch(addOffer());
+    onAddOffer: (payload) => {
+      dispatch(addOffer(payload));
     }
   };
 };
