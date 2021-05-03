@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
 
 export const addOffer = (payload) => {
-  console.log("Payload", payload)
   return {
     type: actionTypes.ADD_OFFER,
     payload: payload
