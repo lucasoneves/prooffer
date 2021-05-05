@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Container from "../container/Container";
 import Greeting from "../components/Greeting/Greeting";
 import BaseInput from "../components/BaseInput/BaseInput";
 import BaseSelect from "../components/BaseSelect/BaseSelect";
 import BaseButton from "../components/BaseButton/BaseButton";
 import Loading from "../components/Loading/Loading";
+
 import styled from "styled-components";
+
 import { connect } from "react-redux";
 import { addOffer } from "../store/actions/actions";
+
+
 
 const FormWrapper = styled.form`
   input {
@@ -25,6 +30,7 @@ const GreetingText = styled.p`
 `;
 
 const NewJob = (props) => {
+  let history = useHistory();
   const [loading, setLoading] = useState(false);
   let [formOffer, setFormOffer] = useState({
     company_name: "",
@@ -81,6 +87,12 @@ const NewJob = (props) => {
       };
     });
   };
+
+  const AddJobOffer = () => {
+    
+    history.push('/')
+    return props.onAddOffer(formOffer)
+  }
   return (
     <Container>
       <Greeting>Adicionar processo seletivo</Greeting>
@@ -115,7 +127,7 @@ const NewJob = (props) => {
         <BaseButton
           className="button-submit"
           type="success"
-          click={() => props.onAddOffer(formOffer)}
+          click={() => AddJobOffer()}
         >
           Salvar
         </BaseButton>
