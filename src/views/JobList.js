@@ -26,28 +26,28 @@ const Wrapper = styled.div`
 `;
 
 const JobsList = (props) => {
-  const jobsInfo = props.offer.map((item) =>
-     (
-      <CardJob
-        classList="card-offer"
-        thumb={item.thumb}
-        company_name={item.company_name}
-        role={item.role}
-        contact={`${item.contact.email}`}
-        key={item.id}
-        clicked={() => props.onRemoveOffer(item.id)}
-        edit={() => props.onEditOffer(item)}
-      ></CardJob>
-    )
-  );
+  const jobsInfo = props.offer.map((item) => (
+    <CardJob
+      classList="card-offer"
+      thumb={item.thumb}
+      company_name={item.company_name}
+      role={item.role}
+      contact={`${item.contact.email}`}
+      key={item.id}
+      clicked={() => props.onRemoveOffer(item.id)}
+      edit={() => props.onEditOffer(item)}
+    ></CardJob>
+  ));
 
   return (
     <div>
       <Container>
         <Greeting>
-          Olá! Esses são seus processos seletivos cadastrados =).
+          {jobsInfo.length
+            ? "Olá! Esses são seus processos seletivos cadastrados."
+            : "Olá! Você não possui nenhum processo seletivo em andamento"}
         </Greeting>
-        <Wrapper>{jobsInfo.length ? jobsInfo : 'Ainda não existem processos seletivos cadastrados.'}</Wrapper>
+        <Wrapper>{jobsInfo.length ? jobsInfo : ""}</Wrapper>
       </Container>
     </div>
   );
@@ -62,7 +62,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onRemoveOffer: (payload) => {
-      console.log('[DELETE_ITEM]', payload);
+      console.log("[DELETE_ITEM]", payload);
       dispatch(removeOffer(payload));
     },
     onEditOffer: (payload) => {
