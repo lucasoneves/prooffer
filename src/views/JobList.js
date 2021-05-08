@@ -25,6 +25,9 @@ const Wrapper = styled.div`
   }
 `;
 
+const hasJobsMessage = "Olá! Esses são seus processos seletivos cadastrados.";
+const jobsEmpty = "Olá! Você não possui nenhum processo seletivo em andamento";
+
 const JobsList = (props) => {
   const jobsInfo = props.offer.map((item) => (
     <CardJob
@@ -44,8 +47,8 @@ const JobsList = (props) => {
       <Container>
         <Greeting>
           {jobsInfo.length
-            ? "Olá! Esses são seus processos seletivos cadastrados."
-            : "Olá! Você não possui nenhum processo seletivo em andamento"}
+            ? hasJobsMessage
+            : jobsEmpty }
         </Greeting>
         <Wrapper>{jobsInfo.length ? jobsInfo : ""}</Wrapper>
       </Container>
